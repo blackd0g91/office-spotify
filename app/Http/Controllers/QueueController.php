@@ -18,6 +18,10 @@ class QueueController extends Controller
         ]);
     }
 
+    public function addTrack (Request $request) {
+        $response = Spotify::queueAddTrack( [ 'uri' => 'spotify:track:'.$request->id ] )->post();
+    }
+
     public function request () {
         return Inertia::render('Request');
     }

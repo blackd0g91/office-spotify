@@ -9,11 +9,6 @@ use Inertia\Inertia;
 
 class SpotifyController extends Controller
 {
-    // public function test (Request $request) {
-    //     return Inertia::render('Spotify', [
-    //         'playing' => Spotify::playerPlaying()->get(),
-    //     ]);
-    // }
 
     public function search ($query) {
         return Spotify::search($query)->get();

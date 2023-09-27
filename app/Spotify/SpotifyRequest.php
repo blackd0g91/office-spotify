@@ -8,8 +8,7 @@ class SpotifyRequest{
 
     private $headers;
 
-    public function __construct(string $type, string $endpoint, $params = [])
-    {
+    public function __construct(string $type, string $endpoint, $params = []) {
         $this->endpoint = $endpoint;
         $this->params = $params;
         $this->headers = [
@@ -19,8 +18,8 @@ class SpotifyRequest{
         ];
     }
 
-    public function get(){
-        // dd($this->params);
+    public function get() {
+
         try {
             $response = (new SpotifyClient)->get(self::SPOTIFY_API_URL.$this->endpoint.'?'.http_build_query($this->params), [
                 'headers' => $this->headers,
@@ -36,7 +35,8 @@ class SpotifyRequest{
         return json_decode((string) $response->getBody(), true);
     }
 
-    public function post(){
+    public function post() {
+
         $response = (new SpotifyClient)->post(self::SPOTIFY_API_URL.$this->endpoint, [
             'headers' => $this->headers,
             'form_params' => $this->params,
@@ -45,7 +45,7 @@ class SpotifyRequest{
         return json_decode((string) $response->getBody(), true);
     }
 
-    public function put(){
+    public function put() {
         $response = (new SpotifyClient)->put(self::SPOTIFY_API_URL.$this->endpoint, [
             'headers' => $this->headers,
             'form_params' => $this->params,

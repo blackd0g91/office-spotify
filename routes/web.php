@@ -53,6 +53,7 @@ Route::middleware('auth')->middleware('verified')->group(function () {
     Route::post('player/play',          [PlayerController::class, 'play'])->name('player.play');
 
     Route::get('queue',                 [QueueController::class, 'index'])->name('queue');
+    Route::post('queue/track',          [QueueController::class, 'addTrack'])->name('queue.track.add');
     Route::get('request',               [QueueController::class, 'request'])->name('request');
 
 });

@@ -4,13 +4,6 @@ namespace App\Spotify;
 
 class Spotify {
 
-    public static function teste(){
-        return new SpotifyRequest(
-            'user', 
-            'me/player'
-        );
-    }
-
     public static function search($query) {
         return new SpotifyRequest(
             'general', 
@@ -18,7 +11,7 @@ class Spotify {
             [
                 'q' => $query,
                 'type' => 'track',
-                'limit' => 10,
+                'limit' => 15,
             ]
         );
     }
@@ -81,7 +74,14 @@ class Spotify {
     public static function playerQueue(){
         return new SpotifyRequest(
             'user', 
-            'me/player/queue'
+            'me/player/queue',
+        );
+    }
+
+    public static function queueAddTrack($params){
+        return new SpotifyRequest(
+            'user', 
+            'me/player/queue?' . http_build_query($params)
         );
     }
 
