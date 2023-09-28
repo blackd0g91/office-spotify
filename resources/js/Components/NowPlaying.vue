@@ -1,11 +1,11 @@
 <script setup>
 
-    import SectionTitle from '@/Components/SectionTitle.vue';
+import SectionTitle from '@/Components/SectionTitle.vue';
 
-    defineProps({
-        queue: Object,
-        playing: Object
-    });
+defineProps({
+    playing: Object
+});
+
 </script>
 
 <template>

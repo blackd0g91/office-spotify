@@ -23,6 +23,8 @@ class QueueController extends Controller
     }
 
     public function request () {
-        return Inertia::render('Request');
+        return Inertia::render('Request', [
+            'playing' => Spotify::playerPlaying()->get(),
+        ]);
     }
 }
