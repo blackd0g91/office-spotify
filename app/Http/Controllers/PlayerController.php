@@ -9,11 +9,7 @@ use Inertia\Inertia;
 
 class PlayerController extends Controller
 {
-    public function player() {
-        return Inertia::render('Player', [
-            'playing' => Spotify::playerPlaying()->get(),
-        ]);
-    }
+
 
     public function next() {
         Spotify::playerNext()->post();

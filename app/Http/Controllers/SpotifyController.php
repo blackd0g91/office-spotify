@@ -5,10 +5,23 @@ namespace App\Http\Controllers;
 use App\Spotify\Spotify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class SpotifyController extends Controller
 {
+
+    public function test () {
+        return Spotify::playerPlaying()->get();
+    }
+
+
+
+    
+
+    public function index() {
+        return Inertia::render('Dashboard');
+    }
 
     public function search ($query) {
         return Spotify::search($query)->get();

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SpotifyController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\QueueController;
@@ -36,25 +37,27 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->middleware('verified')->group(function () {
 
-    Route::get('dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+    Route::get('test',                  [SpotifyController::class, 'test'])->name('test');
 
-    Route::get('player',                [PlayerController::class, 'player'])->name('player');
+    // Pages
+    Route::get('dashboard',             [SpotifyController::class, 'index'])->name('dashboard');
+    Route::get('admin',                 [AdminController::class, 'index'])->name('admin');
+    Route::get('queue',                 [QueueController::class, 'index'])->name('queue');
+    Route::get('request',               [QueueController::class, 'request'])->name('request');
+    
+    // Player Authorization
     Route::get('spotify/authorize',     [SpotifyController::class, 'authorizeUser']);
     Route::get('spotify/authorized',    [SpotifyController::class, 'register']);
-    Route::get('search/{q}',            [SpotifyController::class, 'search'])->name('search');
 
+    // Actions
     Route::get('player/playing',        [PlayerController::class, 'playing'])->name('player.playing');
     Route::get('player/queue',          [PlayerController::class, 'queue'])->name('player.queue');
     Route::post('player/previous',      [PlayerController::class, 'previous'])->name('player.previous');
     Route::post('player/next',          [PlayerController::class, 'next'])->name('player.next');
     Route::post('player/pause',         [PlayerController::class, 'pause'])->name('player.pause');
     Route::post('player/play',          [PlayerController::class, 'play'])->name('player.play');
-
-    Route::get('queue',                 [QueueController::class, 'index'])->name('queue');
+    Route::get('search/{q}',            [SpotifyController::class, 'search'])->name('search');
     Route::post('queue/track',          [QueueController::class, 'addTrack'])->name('queue.track.add');
-    Route::get('request',               [QueueController::class, 'request'])->name('request');
 
 });
 

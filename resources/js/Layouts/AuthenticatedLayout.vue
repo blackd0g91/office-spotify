@@ -32,8 +32,8 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </NavLink>
-                                <NavLink :href="route('player')" :active="route().current('player')">
-                                    Player
+                                <NavLink v-if="$page.props.auth.user.name" :href="route('admin')" :active="route().current('admin')">
+                                    Administrator Panel
                                 </NavLink>
                                 <NavLink :href="route('queue')" :active="route().current('queue')">
                                     Queue
@@ -124,8 +124,8 @@ const showingNavigationDropdown = ref(false);
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
                         </ResponsiveNavLink>
-                        <ResponsiveNavLink :href="route('player')" :active="route().current('player')">
-                            Player
+                        <ResponsiveNavLink v-if="$page.props.auth.user.name" :href="route('admin')" :active="route().current('admin')">
+                            Administrator Panel
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('queue')" :active="route().current('queue')">
                             Queue
