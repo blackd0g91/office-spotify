@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SpotifyController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\VoteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\QueueController;
@@ -58,6 +59,9 @@ Route::middleware('auth')->middleware('verified')->group(function () {
     Route::post('player/play',          [PlayerController::class, 'play'])->name('player.play');
     Route::get('search/{q}',            [SpotifyController::class, 'search'])->name('search');
     Route::post('queue/track',          [QueueController::class, 'addTrack'])->name('queue.track.add');
+
+    // Voting
+    Route::post('vote/skip',            [VoteController::class, 'voteToSkip'])->name('vote.skip');
 
 });
 

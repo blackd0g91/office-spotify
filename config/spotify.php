@@ -32,4 +32,6 @@ return [
         'market' => null,
     ],
 
+    'votes_to_skip' => env('SPOTIFY_VOTES_TO_SKIP', '3')
+
 ];

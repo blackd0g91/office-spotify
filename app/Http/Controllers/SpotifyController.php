@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Spotify\Spotify;
+use App\Models\RequestedTracks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +13,13 @@ class SpotifyController extends Controller
 {
 
     public function test () {
-        return Spotify::playerPlaying()->get();
+        // return Auth::user()->requestedTracks;
+
+        $data = ['spotify_id' => 'asdasd'];
+
+        Auth::user()->requestedTracks()->create($data);
+
+        dd(\App\Models\RequestedTracks::all());
     }
 
 
