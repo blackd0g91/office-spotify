@@ -78,10 +78,10 @@ class Spotify {
         );
     }
 
-    public static function queueAddTrack($params){
+    public static function queueAddTrack($id){
         return new SpotifyRequest(
             'user', 
-            'me/player/queue?' . http_build_query($params)
+            'me/player/queue?uri=spotify:track:' . $id
         );
     }
 

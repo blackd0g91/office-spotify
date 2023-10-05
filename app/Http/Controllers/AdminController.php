@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
     public function index() {
         return Inertia::render('Admin', [
-            'playing' => Spotify::playerPlaying()->get(),
+            'playing' => Spotify::playerPlaying()->get()->json()
         ]);
     }
 }

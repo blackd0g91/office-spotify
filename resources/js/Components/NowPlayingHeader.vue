@@ -1,7 +1,5 @@
 <script setup>
 
-// import SectionTitle from '@/Components/SectionTitle.vue';
-
 defineProps({
     playing: Object
 });
@@ -10,8 +8,6 @@ defineProps({
 
 <template>
     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded">
-
-        <!-- <SectionTitle title="Now Playing" /> -->
 
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded flex flex-row">
 
@@ -30,14 +26,10 @@ defineProps({
 
                 <p class="text-gray-900 dark:text-gray-100">
                     Now playing: 
-                    <b class="text-lg underline"> {{ playing.name }} </b>
+                    <b id="now-playing-name" class="text-lg underline"> {{ playing.name }} </b>
                     by
-                    <b class="text-lg underline"> {{ playing.artists[0].name }} </b>
+                    <b id="now-playing-artist" class="text-lg underline"> {{ playing.artists[0].name }} </b>
                 </p>
-
-                <!-- <p class="text-gray-900 dark:text-gray-100">
-                    {{ playing.album.name }}
-                </p> -->
 
             </div>
 

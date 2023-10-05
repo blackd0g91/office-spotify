@@ -39,7 +39,6 @@ class SpotifyAuth
             } else if($type === 'user') {
 
                 if(Cache::has('spotifyRefreshToken')) {
-                    var_dump('refresh');
                     $response = (new SpotifyClient)->post(self::SPOTIFY_API_TOKEN_URL, [
                         'headers' => $headers,
                         'form_params' => [

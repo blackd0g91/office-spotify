@@ -32,10 +32,10 @@ class PlayerController extends Controller
     }
 
     public function playing() {
-        return Spotify::playerPlaying()->get();
+        return Spotify::playerPlaying()->get()->json();
     }
 
     public function queue() {
-        return Spotify::playerQueue()->get();
+        return Spotify::playerQueue()->get()->json();
     }
 }

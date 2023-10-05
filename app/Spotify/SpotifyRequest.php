@@ -7,6 +7,7 @@ class SpotifyRequest{
     private const SPOTIFY_API_URL = 'https://api.spotify.com/v1/';
 
     private $headers;
+    private $response;
 
     public function __construct(string $type, string $endpoint, $params = []) {
         $this->endpoint = $endpoint;
@@ -32,17 +33,18 @@ class SpotifyRequest{
             throw new Request/Exception($message, $status, $errorResponse);
         }
 
-        return json_decode((string) $response->getBody(), true);
+        $this->response = $response;
+        return $this;
     }
 
     public function post() {
-
         $response = (new SpotifyClient)->post(self::SPOTIFY_API_URL.$this->endpoint, [
             'headers' => $this->headers,
             'form_params' => $this->params,
         ]);
 
-        return json_decode((string) $response->getBody(), true);
+        $this->response = $response;
+        return $this;
     }
 
     public function put() {
@@ -51,7 +53,17 @@ class SpotifyRequest{
             'form_params' => $this->params,
         ]);
 
-        return json_decode((string) $response->getBody(), true);
+        $this->response = $response;
+        return $this;
+    }
+
+    public function json() {
+        if($this->response->getStatusCode() === 200) {
+            return json_decode((string) $this->response->getBody());
+        } else {
+            dd($this->response);
+        }
+        
     }
 
 }

@@ -14,24 +14,19 @@ class SpotifyController extends Controller
 
     public function test () {
         // return Auth::user()->requestedTracks;
+        // $data = ['spotify_id' => 'asdasd'];
+        // Auth::user()->requestedTracks()->create($data);
+        // dd(\App\Models\RequestedTracks::all());
 
-        $data = ['spotify_id' => 'asdasd'];
+        $ids = \App\Models\RequestedTracks::all();
 
-        Auth::user()->requestedTracks()->create($data);
-
-        dd(\App\Models\RequestedTracks::all());
-    }
-
-
-
-    
-
-    public function index() {
-        return Inertia::render('Dashboard');
+        foreach ($ids as $id) {
+            echo $id->spotify_id . "<br>";
+        }
     }
 
     public function search ($query) {
-        return Spotify::search($query)->get();
+        return Spotify::search($query)->get()->json();
     }
 
     public function register (Request $request) {

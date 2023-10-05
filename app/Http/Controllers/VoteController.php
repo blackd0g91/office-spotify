@@ -16,8 +16,8 @@ class VoteController extends Controller
 
         $userId = Auth::user()->id;
         $lastVoteSongId = Cache::get('lastVoteSongId', NULL);
-        $nowPlaying = Spotify::playerPlaying()->get();
-        $nowPlayingId = $nowPlaying['item']['id'];
+        $nowPlaying = Spotify::playerPlaying()->get()->json();
+        $nowPlayingId = $nowPlaying->item->id;
 
         if($lastVoteSongId === NULL || $lastVoteSongId !== $nowPlayingId){
             Cache::forget('lastVoteSongId');

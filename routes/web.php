@@ -41,7 +41,7 @@ Route::middleware('auth')->middleware('verified')->group(function () {
     Route::get('test',                  [SpotifyController::class, 'test'])->name('test');
 
     // Pages
-    Route::get('dashboard',             [SpotifyController::class, 'index'])->name('dashboard');
+    Route::get('dashboard',             fn() => Inertia::render('Dashboard'))->name('dashboard');
     Route::get('admin',                 [AdminController::class, 'index'])->name('admin');
     Route::get('queue',                 [QueueController::class, 'index'])->name('queue');
     Route::get('request',               [QueueController::class, 'request'])->name('request');

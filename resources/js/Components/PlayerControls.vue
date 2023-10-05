@@ -15,7 +15,7 @@ import MainButton from '@/Components/MainButton.vue';
             console.log(data);
             document.querySelector('#now-playing-album-image').src = data.item.album.images[0].url;
             document.querySelector('#now-playing-album-image').alt = data.item.album.name;
-            document.querySelector('#now-playing-album-name').innerHTML = data.item.album.name;
+            // document.querySelector('#now-playing-album-name').innerHTML = data.item.album.name;
             document.querySelector('#now-playing-name').innerHTML = data.item.name;
             document.querySelector('#now-playing-artist').innerHTML = data.item.artists[0].name;
         })
